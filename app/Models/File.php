@@ -10,4 +10,9 @@ use Kalnoy\Nestedset\NodeTrait;
 class File extends Model
 {
     use HasModifier, NodeTrait, SoftDeletes;
+
+    public function isOwner(int $user_id): bool
+    {
+        return $this->created_by === $user_id;
+    }
 }
